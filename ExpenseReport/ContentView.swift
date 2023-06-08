@@ -2,22 +2,26 @@
 //  ContentView.swift
 //  ExpenseReport
 //
-//  Created by Jeroen Abrahams on 08/06/2023.
-//
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        let expenseReport = ExpenseReport(expenses: [Expense(type: .breakfast, amount: 20)])
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
-            Text("Hello, world!")
+                .disabled(expenseReport.invalidExpenses())
+            Text("Expenses")
+            Button("Add random expense", action: {
+                print("We still need to implement this!")
+            })
+            Spacer()
+            Text(expenseReport.expenseTotal.text)
         }
         .padding()
-    }
-}
+    }}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
